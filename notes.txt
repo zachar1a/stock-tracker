@@ -1,0 +1,11 @@
+need to make an automation system that keeps track of the stock
+throughout the day
+
+what do i need in the logs:
+	done- Date
+	done- Ticker-Company Name
+	done- open-close
+
+	need- high-low
+	need- current ask
+	need- current bid
