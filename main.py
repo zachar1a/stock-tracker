@@ -97,6 +97,19 @@ def quoteUpdater():
 ticker = input("What stock would you like to keep track of: ")
 key = config.key
 def main():
-    quoteInfo()
-    quoteUpdater()
+   #quoteInfo()
+   #quoteUpdater()
+    symbol = 0
+    companyName = "none"
+    high = 0
+    low = 0
+    latestPrice = 0
+    latestSource = 0
+    calculationPrice = 0
+    stockOpen = 0
+    openTime = 0
+    close = 0
+    ob = si.stock(symbol, companyName, high, low, latestPrice, latestSource, calculationPrice, stockOpen, openTime, close)
+    for key, value in ob.items():
+        print(key, value)
 main()

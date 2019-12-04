@@ -1,0 +1,6 @@
+I want to use a markov chain on stocks
+
+lets say that the time is 10:10 on any given day
+ 
+I want to take the stock price from the same time on the past three days at the 3 minutes leading up to 10:11 ( so i would have stock price from times 
+10:07, 10:08, 10:09, 10:10) and see how accurate the chain can get so i can predict the prices of every minute
