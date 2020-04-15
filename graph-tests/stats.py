@@ -34,17 +34,29 @@ def getListSize():
         myArr=json.loads(jf.read())
     return len(myArr)
 
+def getAveragePrice(priceList): 
+    avg_p=0
+    for i in range(len(priceList)):
+        avg_p += priceList[i]
+        print(priceList[i])
+    return avg_p/len(priceList)
+
+
+
+
+
 
 #this is the main plotting function
 def main():
 
+
     open_price=getOpenPrice()
     date=getDate()
-
     myArrSize=getListSize()
+    print(getAveragePrice(open_price))
 
     x_avg=[date[0],date[myArrSize-1]]
-    y_avg=[open_price[0],open_price[myArrSize-1]]
+    y_avg=[getAveragePrice(open_price), getAveragePrice(open_price)]
 
     plt.plot(date,open_price)
     plt.plot(x_avg,y_avg)
