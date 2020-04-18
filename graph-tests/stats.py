@@ -49,7 +49,6 @@ def getAveragePrice(priceList):
 #this is the main plotting function
 def main():
 
-
     open_price=getOpenPrice()
     date=getDate()
     myArrSize=getListSize()
