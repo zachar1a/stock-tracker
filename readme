@@ -1,0 +1,3 @@
+This tool can be used with an iex api key.
+simply add a config.py file with a 'key' variable
+set it to your iex key. Then you can start tracking stocks
