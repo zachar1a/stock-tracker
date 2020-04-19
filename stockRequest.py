@@ -5,10 +5,11 @@ import os, time, datetime, requests, json
 import stockInfo as si
 import config,time
 from datetime import datetime
+
 def getQuote(ticker, key):
     getQuoteUrl = "https://cloud.iexapis.com/beta/stock/%(ticker)s/quote?token=%(key)s"%({'key':key, 'ticker':ticker})
-    getQuteRequest = requests.get(getQuoteUrl)
-    return getQuteRequest
+    return requests.get(getQuoteUrl)
+    
         
 def retrieveDataFromResponse(responseFromAPI):
     return json.loads(responseFromAPI.text)
@@ -19,13 +20,6 @@ def sendToJSON():
     print(stockData['iexRealtimePrice'])
     print(datetime.now().strftime("%H%M%S"))
     
-#sendToJSON()
 
 
 
-def main():
-
-    print(datetime.now())
-
-
-main()
