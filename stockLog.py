@@ -61,9 +61,6 @@ def checkForStockFile(ticker, stockData):
         createFileForTicker(ticker)
         appendDataToFile(ticker, stockData)
 
-ticker = input("what ticker do you want to track: ")
-checkForStockFile(ticker, retrieveStockData(ticker, config.key))
-
 
 
 
