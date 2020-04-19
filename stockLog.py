@@ -54,6 +54,17 @@ def appendDataToFile(ticker, stockData):
 #       open, current price, time of price
 #
 # 3) if the file is created, then append data to file
+#
+
+# TODO @ZACHARY
+# I am going to change the function to instead of adding
+# only a file I am going to add a dir with the ticker name
+# and then a file with the ticker and the date
+# e.g TSLA would be TSLA20190419.csv
+# and then I would have a main TSLA file that would have
+# all of the data that I have tracked for the TSLA ticker
+
+
 def checkForStockFile(ticker, stockData):
     if path.exists(str(ticker) + str(".csv")):
         appendDataToFile(ticker, stockData)
