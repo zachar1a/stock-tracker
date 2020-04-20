@@ -1,3 +1,5 @@
+# authour: Zachary Christian
+# date: 20200419
 import stockRequest, config, json, csv
 from time import strftime
 import os
@@ -10,6 +12,7 @@ def retrieveStockData(ticker, key):
     currTime = strftime('%H%M%S')
     currDate = strftime('%Y%m%d')
     dataArray= [stockJson['open'], stockJson['latestPrice'], stockJson['latestPrice']-stockJson['open'],currTime, currDate]
+    print(dataArray)
     return dataArray
 
 # createFileForTicker makes a csv file with the column names
@@ -74,11 +77,13 @@ def checkForStockDir(ticker):
     if path.exists(str(ticker)):
         os.chdir(tickerPath)
         checkForStockFile(ticker, retrieveStockData(ticker, config.key))
+        os.chdir(currPath)
         # going to add checkForStockFile here
     else:
         os.mkdir(tickerPath.upper())
         os.chdir(tickerPath)
         checkForStockFile(ticker, retrieveStockData(ticker, config.key))
+        os.chdir(currPath)
         # going to add checkForStockFile here
 
 
