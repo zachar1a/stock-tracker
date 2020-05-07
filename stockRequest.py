@@ -18,3 +18,4 @@ def sendToJSON():
     stockData = retrieveDataFromResponse(getQuote(ticker, config.key))
     print(stockData['iexRealtimePrice'])
     print(datetime.now().strftime("%H%M%S"))
+

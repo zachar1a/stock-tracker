@@ -9,9 +9,17 @@ from os import path
 # for the stock ticker as well as one for the config key
 def retrieveStockData(ticker, key):
     stockJson = json.loads(stockRequest.getQuote(ticker,key).text)
+    
     currTime = strftime('%H%M%S')
     currDate = strftime('%Y%m%d')
-    dataArray= [stockJson['open'], stockJson['latestPrice'], stockJson['latestPrice']-stockJson['open'],currTime, currDate]
+    openPrice = stockJson['open']
+    currPrice = stockJson['iexRealtimePrice']
+
+    if openPrice == None:
+        openPrice = stockJson['previousClose']
+    fromOpen = openPrice - currPrice
+
+    dataArray= [openPrice, currPrice, fromOpen, currTime, currDate]
     print(dataArray)
     return dataArray
 
@@ -19,7 +27,7 @@ def retrieveStockData(ticker, key):
 # open, current price, data
 def createFileForTicker(ticker):
     with open(str(ticker).upper() + str('.csv'), 'w', newline='') as file:
-        csv.writer(file).writerow(['Open', 'Current Price', 'From Open', 'Time', 'Date'])
+        csv.writer(file).writerow(['Open', 'Current Price','From Open',  'Time', 'Date'])
         file.close()
 
 # appendDataToFile appends the important data to the csv file
@@ -41,15 +49,6 @@ def appendDataToFile(ticker, stockData):
 #
 # 3) if the file is created, then append data to file
 #
-
-# TODO @ZACHARY
-# I am going to change the function to instead of adding
-# only a file I am going to add a dir with the ticker name
-# and then a file with the ticker and the date
-# e.g TSLA would be TSLA20190419.csv
-# and then I would have a main TSLA file that would have
-# all of the data that I have tracked for the TSLA ticker 
-
 def checkForStockFile(ticker, stockData):
     currDate = strftime('%Y%m%d')
     tickerFinal = str(ticker) + str(currDate)
@@ -66,7 +65,11 @@ def checkForStockFile(ticker, stockData):
         createFileForTicker(tickerFinal)
         appendDataToFile(tickerFinal, stockData)
 
-
+# This function checks for a dir that is the name of
+# the ticker we are tracking and if it is not created
+# it creates the dir then switches to its path
+# and then executes the checkForStockFile function
+# inside
 
 def checkForStockDir(ticker):
     currPath = os.getcwd()
