@@ -1,7 +1,6 @@
 # author: Zachary Christian
 # date: 20200419
 
-import config
 import stockLog as sl
 import time
 from time import strftime
